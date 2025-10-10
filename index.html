@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MD TALHA - Freelancer Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MD TALHA — Creative Freelancer</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- AOS (Animate on Scroll) CSS -->
+  <!-- AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <!-- Lottie Player -->
@@ -18,187 +18,351 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
-    body{background:#f9f9f9;color:#333;overflow-x:hidden;}
-    a{text-decoration:none;color:inherit;}
-    header{position:relative;text-align:center;overflow:hidden;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#1f2937;color:white;}
-    header h1{font-size:2.5rem;margin-bottom:10px;animation:fadeInUp 1s ease forwards;}
-    header p{font-size:1.2rem;margin-bottom:20px;animation:fadeInUp 1.2s ease forwards;}
-    .btn{background:#3b82f6;color:white;padding:10px 20px;border-radius:5px;cursor:pointer;transition:0.3s;animation:fadeInUp 1.4s ease forwards;}
-    .btn:hover{background:#2563eb;}
+    :root{
+      --bg:#0f1724;            /* deep background */
+      --card:#0b1220;          /* dark card */
+      --text:#e6eef8;          /* light text */
+      --muted:#9aa9c3;         /* muted */
+      --accent:#3b82f6;        /* electric blue */
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(180deg,var(--bg) 0%, #071124 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
 
-    /* Floating shapes */
-    .floating-shape{position:absolute;border-radius:50%;opacity:0.3;animation:floating 10s infinite;}
-    .shape1{width:150px;height:150px;background:#3b82f6;top:20%;left:-50px;animation-delay:0s;}
-    .shape2{width:100px;height:100px;background:#f97316;top:50%;right:-50px;animation-delay:2s;}
-    .shape3{width:80px;height:80px;background:#22c55e;top:70%;left:-40px;animation-delay:4s;}
-    @keyframes floating{0%{transform:translateY(0px);}50%{transform:translateY(-20px);}100%{transform:translateY(0px);}}
-    @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+    /* particles container sits behind everything */
+    #particles-js{position:fixed;inset:0;z-index:0;opacity:0.55;pointer-events:none}
 
-    section{padding:80px 20px;max-width:1000px;margin:0 auto;}
-    h2{text-align:center;margin-bottom:40px;font-size:2rem;color:#111827;}
+    /* glowing cursor trail canvas wrapper */
+    #cursor-trail{position:fixed;inset:0;z-index:9999;pointer-events:none}
 
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
-    .skill{background:white;padding:20px;border-radius:10px;width:200px;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
-    .skill svg{width:100px;height:100px;transform:rotate(-90deg);}
-    .skill-name{margin-top:10px;font-weight:bold;}
+    /* page layout */
+    .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:40px 20px 120px;}
 
-    /* Portfolio */
-    .portfolio{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-    .project{background:white;padding:20px;border-radius:10px;width:250px;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:0.5s;}
-    .project:hover{transform:scale(1.05);box-shadow:0 8px 12px rgba(0,0,0,0.2);}
-    .project-icon{font-size:2rem;margin-bottom:10px;color:#3b82f6;}
+    /* header / hero */
+    header.hero{
+      min-height:86vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      padding:60px 20px;
+      z-index:2;
+    }
+    .hero-inner{max-width:920px;position:relative;z-index:2;}
+    h1{
+      font-size:2.6rem;
+      margin:0 0 10px;
+      letter-spacing:0.4px;
+      color:var(--text);
+    }
+    .tagline{
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:1.05rem;
+    }
+    .sub{
+      color:var(--muted);
+      margin-bottom:20px;
+      font-size:0.95rem;
+    }
+    .cta{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--accent),#2563eb);
+      color:white;padding:12px 20px;border-radius:10px;font-weight:700;box-shadow:0 6px 22px rgba(59,130,246,0.15);
+      text-decoration:none;transition:all .25s;
+    }
+    .cta:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(59,130,246,0.18)}
 
-    /* Services */
-    .services{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-    .service{background:white;padding:20px;border-radius:10px;width:250px;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:0.3s;}
-    .service:hover{transform:translateY(-5px);}
-    .service-icon{font-size:2rem;margin-bottom:10px;color:#3b82f6;}
+    /* floating shapes (decor) */
+    .float-shape{
+      position:absolute;border-radius:50%;opacity:0.12;filter:blur(16px);
+      z-index:1;pointer-events:none;
+    }
+    .fs1{width:300px;height:300px;background:radial-gradient(circle at 30% 30%, #3b82f6, transparent);top:10%;left:-80px;animation:floatY 8s ease-in-out infinite}
+    .fs2{width:220px;height:220px;background:radial-gradient(circle at 70% 70%, #2563eb, transparent);top:48%;right:-80px;animation:floatY 10s ease-in-out infinite;animation-delay:1s}
+    .fs3{width:140px;height:140px;background:radial-gradient(circle at 50% 50%, #22c55e, transparent);top:70%;left:-60px;animation:floatY 9s ease-in-out infinite;animation-delay:2s}
+    @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-20px)}100%{transform:translateY(0)}}
 
-    /* Contact */
-    .contact-form{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:15px;}
-    .contact-form input, .contact-form textarea{padding:10px;border-radius:5px;border:1px solid #ccc;width:100%;}
-    .contact-form button{width:fit-content;transition:0.3s;}
-    .contact-form button:hover{transform:scale(1.05);background:#2563eb;}
+    /* cards & sections */
+    section{padding:60px 20px;border-radius:12px;margin-top:18px;position:relative;z-index:2}
+    .glass{background:linear-gradient(180deg,var(--glass),var(--glass-2));backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
 
-    footer{background:#1f2937;color:white;text-align:center;padding:20px;}
+    h2{font-size:1.5rem;margin-bottom:18px;color:var(--text)}
+    p.lead{color:var(--muted);line-height:1.6}
 
-    #particles-js{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+    .skill{
+      width:220px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));text-align:center;box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      transition:transform .35s, box-shadow .35s;cursor:default;
+    }
+    .skill:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(3,8,29,0.7)}
+    .skill .skill-title{margin-top:12px;font-weight:700}
+    .skill lottie-player{width:92px;height:92px;margin:0 auto;display:block}
 
-    @media(max-width:768px){.skills,.services,.portfolio{flex-direction:column;align-items:center;}}
+    /* portfolio cards */
+    .portfolio{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+    .card{
+      width:300px;background:linear-gradient(180deg, #071124, #05101b);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 30px rgba(3,8,29,0.6);
+      transform:translateY(0);transition:transform .45s, box-shadow .45s;overflow:hidden;position:relative;
+    }
+    .card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 28px 60px rgba(2,6,23,0.7)}
+    .card .thumb{height:160px;border-radius:8px;background:linear-gradient(90deg, rgba(59,130,246,0.12), rgba(37,99,235,0.08));display:flex;align-items:center;justify-content:center;font-size:42px; color:var(--accent)}
+    .card h3{margin:12px 0 8px;font-size:1.05rem}
+    .card p{color:var(--muted);font-size:0.95rem}
+
+    /* services */
+    .services{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    .service{width:240px;padding:14px;border-radius:10px;background:linear-gradient(180deg,#071427,#04101a);text-align:center;border:1px solid rgba(255,255,255,0.03);transition:transform .3s}
+    .service:hover{transform:translateY(-6px)}
+    .service lottie-player{width:70px;height:70px;margin:0 auto}
+
+    /* contact */
+    .contact-block{max-width:700px;margin:0 auto;padding:20px}
+    .contact-block input,.contact-block textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);margin-bottom:10px}
+    .contact-btn{background:linear-gradient(90deg,var(--accent),#2563eb);padding:12px 18px;border-radius:10px;color:white;font-weight:700;border:none;cursor:pointer;transition:transform .2s}
+    .contact-btn:hover{transform:translateY(-4px)}
+
+    footer{margin-top:40px;padding:30px;text-align:center;color:var(--muted);font-size:0.95rem}
+
+    /* small screens */
+    @media(max-width:860px){
+      h1{font-size:2rem}
+      .card{width:100%}
+      .skill{width:45%}
+      .service{width:100%}
+      .skills{gap:12px}
+    }
+    @media(max-width:520px){
+      .skill{width:100%}
+    }
+
+    /* subtle parallax background layers */
+    .parallax-layer{
+      position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:0.06
+    }
+
+    /* back-to-top */
+    #toTop{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),#2563eb);color:white;padding:10px;border-radius:10px;display:none;z-index:999;box-shadow:0 10px 30px rgba(59,130,246,0.2);cursor:pointer}
   </style>
 </head>
 <body>
 
-  <!-- Particles Background -->
+  <!-- Particles background -->
   <div id="particles-js"></div>
 
-  <!-- Hero Section with Lottie Animation -->
-  <header>
-    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json"  background="transparent"  speed="1"  style="width:300px; height:300px;"  loop  autoplay></lottie-player>
-    <h1>Hi, I’m MD TALHA</h1>
-    <p>Digital Creator & Brand Specialist</p>
-    <p>Banner Design | Logo Design | Video Editing | Web Design | Content Strategy</p>
-    <a href="#contact" class="btn">Hire Me</a>
-    <div class="floating-shape shape1"></div>
-    <div class="floating-shape shape2"></div>
-    <div class="floating-shape shape3"></div>
-  </header>
+  <!-- optional cursor trail canvas -->
+  <canvas id="cursor-trail"></canvas>
 
-  <!-- About Me -->
-  <section id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p style="text-align:center; max-width:700px; margin:0 auto;">
-      I’m a versatile freelancer with skills in design, video, web solutions, and content strategy. I deliver creative digital solutions that help brands stand out online.
-    </p>
-  </section>
+  <!-- floating decor shapes -->
+  <div class="float-shape fs1"></div>
+  <div class="float-shape fs2"></div>
+  <div class="float-shape fs3"></div>
 
-  <!-- Skills -->
-  <section id="skills" data-aos="fade-up">
-    <h2>My Skills</h2>
-    <div class="skills">
-      <div class="skill" data-aos="zoom-in">
-        <svg viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="16" stroke="#3b82f6" stroke-width="3" fill="none" stroke-dasharray="100" stroke-dashoffset="100">
-            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" fill="freeze" />
-          </circle>
-        </svg>
-        <div class="skill-name">Banner Design</div>
+  <!-- main wrapper -->
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-inner glass" data-aos="fade-up">
+        <!-- Lottie hero animation -->
+        <lottie-player src="https://assets5.lottiefiles.com/private_files/lf30_editor_5o9p3m6p.json"
+                       background="transparent" speed="1" loop autoplay style="width:160px;height:160px;margin:0 auto 8px;display:block"></lottie-player>
+
+        <h1>MD TALHA</h1>
+        <div class="tagline">Creative Designer | Video Editor | Brand Builder</div>
+        <div class="sub">Designing brands, social ads & engaging video content that help businesses grow online.</div>
+        <a class="cta" href="#contact">Hire Me — Let's Talk</a>
       </div>
-      <div class="skill" data-aos="zoom-in" data-aos-delay="100">
-        <svg viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="16" stroke="#3b82f6" stroke-width="3" fill="none" stroke-dasharray="100" stroke-dashoffset="100">
-            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" fill="freeze" />
-          </circle>
-        </svg>
-        <div class="skill-name">Logo Design</div>
-      </div>
-      <div class="skill" data-aos="zoom-in" data-aos-delay="200">
-        <svg viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="16" stroke="#3b82f6" stroke-width="3" fill="none" stroke-dasharray="100" stroke-dashoffset="100">
-            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" fill="freeze" />
-          </circle>
-        </svg>
-        <div class="skill-name">Video Editing</div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Portfolio -->
-  <section id="portfolio" data-aos="fade-up">
-    <h2>Portfolio</h2>
-    <div class="portfolio">
-      <div class="project" data-aos="flip-left">
-        <div class="project-icon">🖼️</div>
-        <h3>Banner Design</h3>
-        <p>Sample banner for social media campaigns</p>
+    <!-- ABOUT -->
+    <section class="glass" id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p class="lead">I’m MD TALHA — a versatile digital creator focused on banner & logo design, content strategy, video ads, and web design. I blend creativity with practical marketing to deliver results. New to freelancing, but skilled, dedicated, and learning fast.</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="glass" id="skills" data-aos="fade-up">
+      <h2>My Skills</h2>
+      <div class="skills">
+        <!-- Lottie icons for each skill -->
+        <div class="skill" data-aos="zoom-in">
+          <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_3vbOcw.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div class="skill-title">Banner Design</div>
+        </div>
+
+        <div class="skill" data-aos="zoom-in" data-aos-delay="100">
+          <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_ckzxdh8l.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div class="skill-title">Logo Design</div>
+        </div>
+
+        <div class="skill" data-aos="zoom-in" data-aos-delay="200">
+          <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_totrpclr.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div class="skill-title">Video Editing</div>
+        </div>
+
+        <div class="skill" data-aos="zoom-in" data-aos-delay="300">
+          <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_8p3v2d3n.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div class="skill-title">Web Design & JS</div>
+        </div>
       </div>
-      <div class="project" data-aos="flip-left" data-aos-delay="100">
-        <div class="project-icon">🖼️</div>
-        <h3>Logo Design</h3>
-        <p>Sample logos for fictional brands</p>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="glass" id="portfolio" data-aos="fade-up">
+      <h2>Portfolio</h2>
+      <div class="portfolio">
+        <div class="card" data-aos="flip-left">
+          <div class="thumb">🖼️</div>
+          <h3>Banner Design — Social Campaign</h3>
+          <p>Sample banner mockup for a product launch (social media size + CTA-ready).</p>
+        </div>
+
+        <div class="card" data-aos="flip-left" data-aos-delay="100">
+          <div class="thumb">🖼️</div>
+          <h3>Logo & Brand Identity</h3>
+          <p>Concept logo for a fictional brand — clean, scalable, and brand-ready.</p>
+        </div>
+
+        <div class="card" data-aos="flip-left" data-aos-delay="200">
+          <div class="thumb">🎬</div>
+          <h3>Video Ad — Promo 30s</h3>
+          <p>Short promotional ad edited for YouTube/Instagram with strong hook and CTA.</p>
+        </div>
       </div>
-      <div class="project" data-aos="flip-left" data-aos-delay="200">
-        <div class="project-icon">🎬</div>
-        <h3>Video Ads</h3>
-        <p>Short promotional video sample</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="glass" id="services" data-aos="fade-up">
+      <h2>Services</h2>
+      <div class="services">
+        <div class="service" data-aos="zoom-in">
+          <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_47pyyfcg.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div>Custom Design Solutions</div>
+        </div>
+
+        <div class="service" data-aos="zoom-in" data-aos-delay="100">
+          <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div>Content & Marketing Strategy</div>
+        </div>
+
+        <div class="service" data-aos="zoom-in" data-aos-delay="200">
+          <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_xcogf8wq.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div>Video Production & Ads</div>
+        </div>
+
+        <div class="service" data-aos="zoom-in" data-aos-delay="300">
+          <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_4kx2q32n.json" background="transparent" speed="1" loop autoplay></lottie-player>
+          <div>Web Design & Hosting</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section id="services" data-aos="fade-up">
-    <h2>Services</h2>
-    <div class="services">
-      <div class="service" data-aos="zoom-in"><div class="service-icon">🖼️</div>Custom Design Solutions</div>
-      <div class="service"
-      <div class="service" data-aos="zoom-in" data-aos-delay="100"><div class="service-icon">📈</div>Content & Marketing Strategy</div>
-      <div class="service" data-aos="zoom-in" data-aos-delay="200"><div class="service-icon">🎬</div>Video & Multimedia Production</div>
-      <div class="service" data-aos="zoom-in" data-aos-delay="300"><div class="service-icon">🌐</div>Web Design & Hosting</div>
-    </div>
-  </section>
+    <!-- CONTACT -->
+    <section class="glass" id="contact" data-aos="fade-up">
+      <h2>Contact Me</h2>
+      <div class="contact-block">
+        <p class="lead" style="text-align:center;margin-bottom:14px;color:var(--muted)">Email me directly — <strong>ansariaourangjeb@gmail.com</strong></p>
+        <form id="contactForm">
+          <input id="name" type="text" placeholder="Your name" required />
+          <input id="email" type="email" placeholder="Your email" required />
+          <textarea id="message" placeholder="Your message" rows="5" required></textarea>
+          <div style="text-align:center;margin-top:10px">
+            <button class="contact-btn" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button class="btn" type="submit">Send Message</button>
-    </form>
-    <p style="text-align:center; margin-top:20px;">📧 Email: your-email@example.com | Fiverr/Upwork Links | Instagram / LinkedIn / YouTube</p>
-  </section>
+    <footer>
+      © 2025 MD TALHA — Freelance Digital Creator • ansariaourangjeb@gmail.com
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 MD TALHA | Freelance Digital Creator</p>
-  </footer>
+  </div> <!-- wrap -->
 
-  <!-- Scripts -->
+  <button id="toTop" title="Back to top">↑</button>
+
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({duration:1000, once:true});
-  </script>
 
-  <!-- Particles JS -->
   <script>
+    /* Initialize AOS */
+    AOS.init({ duration:900, once:true });
+
+    /* Initialize Particles */
     particlesJS("particles-js", {
       "particles": {
-        "number": {"value": 50,"density": {"enable": true,"value_area": 800}},
-        "color": {"value": "#3b82f6"},
-        "shape": {"type": "circle"},
-        "opacity": {"value": 0.3},
-        "size": {"value": 3},
-        "line_linked": {"enable": true,"distance": 150,"color": "#3b82f6","opacity": 0.2,"width": 1},
-        "move": {"enable": true,"speed": 2}
+        "number": {"value":40,"density":{"enable":true,"value_area":700}},
+        "color":{"value":"#3b82f6"},
+        "shape":{"type":"circle"},
+        "opacity":{"value":0.25,"random":false},
+        "size":{"value":3,"random":true},
+        "line_linked":{"enable":true,"distance":160,"color":"#3b82f6","opacity":0.12,"width":1},
+        "move":{"enable":true,"speed":2,"random":false,"straight":false,"out_mode":"out"}
       },
-      "interactivity": {"events": {"onhover": {"enable": true,"mode": "repulse"}}},
-      "retina_detect": true
+      "interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":false}},"modes":{"repulse":{"distance":100}}},
+      "retina_detect":true
     });
-  </script>
 
+    /* Simple contact form handler (client-side only) */
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks! Your message will be sent to ansariaourangjeb@gmail.com (you must set up server-side email or use mailto link).');
+      // optional: open mail client:
+      var subject = encodeURIComponent('Website contact from ' + document.getElementById('name').value);
+      var body = encodeURIComponent(document.getElementById('message').value + '\n\nFrom: ' + document.getElementById('email').value);
+      window.location.href = 'mailto:ansariaourangjeb@gmail.com?subject=' + subject + '&body=' + body;
+    });
+
+    /* Back to top */
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400) toTop.style.display='block'; else toTop.style.display='none';
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    /* Simple glowing cursor trail */
+    (function(){
+      const canvas = document.getElementById('cursor-trail');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = innerWidth;
+      let h = canvas.height = innerHeight;
+      window.addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; });
+
+      const particles = [];
+      function addParticle(x,y){
+        particles.push({x,y,r:Math.random()*6+2, vx:(Math.random()-0.5)*1.2, vy:(Math.random()-0.5)*1.2, life:60});
+      }
+      window.addEventListener('mousemove', (e)=>{ addParticle(e.clientX,e.clientY); });
+      function tick(){
+        ctx.clearRect(0,0,w,h);
+        for(let i=particles.length-1;i>=0;i--){
+          const p=particles[i];
+          p.x+=p.vx; p.y+=p.vy; p.life--;
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(59,130,246,' + (p.life/60*0.6) + ')';
+          ctx.shadowBlur=8; ctx.shadowColor='rgb(59,130,246)';
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+          if(p.life<=0) particles.splice(i,1);
+        }
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+  </script>
 </body>
-</html>
+  </html>
