@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD TALHA - Freelancer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif;}
+    body {background:#f9f9f9; color:#333;}
+    a {text-decoration:none; color:inherit;}
+    header {background:#1f2937; color:white; padding:60px 20px; text-align:center;}
+    header h1 {font-size:2.5rem; margin-bottom:10px;}
+    header p {font-size:1.2rem; margin-bottom:20px;}
+    .btn {background:#3b82f6; color:white; padding:10px 20px; border-radius:5px; cursor:pointer; transition:0.3s;}
+    .btn:hover {background:#2563eb;}
+    section {padding:60px 20px; max-width:1000px; margin:0 auto;}
+    h2 {text-align:center; margin-bottom:40px; font-size:2rem; color:#111827;}
+    .skills, .services, .portfolio {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+    .skill, .service, .project {background:white; padding:20px; border-radius:10px; width:250px; text-align:center; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition:0.3s;}
+    .skill:hover, .service:hover, .project:hover {transform:translateY(-5px);}
+    .skill-icon, .service-icon, .project-icon {font-size:2rem; margin-bottom:10px; color:#3b82f6;}
+    .contact-form {max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px;}
+    .contact-form input, .contact-form textarea {padding:10px; border-radius:5px; border:1px solid #ccc; width:100%;}
+    .contact-form button {width:fit-content;}
+    footer {background:#1f2937; color:white; text-align:center; padding:20px;}
+    @media(max-width:768px){.skills, .services, .portfolio{flex-direction:column; align-items:center;}}
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>Hi, I’m MD TALHA</h1>
+    <p>Digital Creator & Brand Specialist</p>
+    <p>Banner Design | Logo Design | Video Editing | Web Design | Content Strategy</p>
+    <a href="#contact" class="btn">Hire Me</a>
+  </header>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:0 auto;">I’m a versatile freelancer with skills in design, video, web solutions, and content strategy. I deliver creative digital solutions that help brands stand out online. 🎨💻✍️🎥</p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div class="skill"><div class="skill-icon">🎨</div>Banner Design</div>
+      <div class="skill"><div class="skill-icon">🎨</div>Logo Design</div>
+      <div class="skill"><div class="skill-icon">🖼️</div>Photo Editing</div>
+      <div class="skill"><div class="skill-icon">🖌️</div>Canva</div>
+      <div class="skill"><div class="skill-icon">📈</div>Brand Marketing</div>
+      <div class="skill"><div class="skill-icon">✍️</div>Content Strategy</div>
+      <div class="skill"><div class="skill-icon">✍️</div>Copywriting</div>
+      <div class="skill"><div class="skill-icon">🎬</div>Video Editing</div>
+      <div class="skill"><div class="skill-icon">🎥</div>Videography</div>
+      <div class="skill"><div class="skill-icon">💻</div>Web Design</div>
+      <div class="skill"><div class="skill-icon">🌐</div>Web Hosting</div>
+      <div class="skill"><div class="skill-icon">💻</div>JavaScript</div>
+      <div class="skill"><div class="skill-icon">📹</div>YouTube & Ads</div>
+      <div class="skill"><div class="skill-icon">📝</div>Content Writing</div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="project"><div class="project-icon">🖼️</div><h3>Banner Design</h3><p>Sample banner for social media campaigns</p></div>
+      <div class="project"><div class="project-icon">🖼️</div><h3>Logo Design</h3><p>Sample logos for fictional brands</p></div>
+      <div class="project"><div class="project-icon">🎬</div><h3>Video Ads</h3><p>Short promotional video sample</p></div>
+      <div class="project"><div class="project-icon">🌐</div><h3>Web Design</h3><p>Sample website layout</p></div>
+      <div class="project"><div class="project-icon">✍️</div><h3>Content Writing</h3><p>Social media captions and blog snippets</p></div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Services</h2>
+    <div class="services">
+      <div class="service"><div class="service-icon">🖼️</div>Custom Design Solutions</div>
+      <div class="service"><div class="service-icon">📈</div>Content & Marketing Strategy</div>
+      <div class="service"><div class="service-icon">🎬</div>Video & Multimedia Production</div>
+      <div class="service"><div class="service-icon">🌐</div>Web Design & Hosting</div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+    <p style="text-align:center; margin-top:20px;">📧 Email: your-email@example.com | Fiverr/Upwork Links | Instagram / LinkedIn / YouTube</p>
+  </section>
+
+  <footer>
+    <p>© 2025 MD TALHA | Freelance Digital Creator</p>
+  </footer>
+
+</body>
+</html>
