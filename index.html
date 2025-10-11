@@ -1,381 +1,192 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MD TALHA — Creative Freelancer</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MD TALHA — Creative Freelancer</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- AOS for scroll animations -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<!-- AOS for scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <!-- particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<style>
+:root{
+  --bg1:#071124; --bg2:#071827; --accent:#3b82f6; --accent-2:#2563eb;
+  --text:#E6EEF8; --muted:#92a7c6;
+}
+*{box-sizing:border-box}
+body, html{margin:0;padding:0;font-family:'Roboto',sans-serif;color:var(--text);height:100%;overflow-x:hidden;background:linear-gradient(180deg,var(--bg1),var(--bg2));}
+.wrap{max-width:1100px;margin:0 auto;padding:36px 18px;position:relative;z-index:2;}
+h1,h2,h3{margin:0;padding:0;}
+a{text-decoration:none;}
 
-  <style>
-    :root{
-      --bg1:#071124; --bg2:#071827;
-      --accent:#3b82f6; --accent-2:#2563eb;
-      --muted:#92a7c6; --text:#E6EEF8;
-      --card: rgba(255,255,255,0.03);
-      --glass: rgba(255,255,255,0.03);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font-family:"Roboto",sans-serif;color:var(--text);
-      background: linear-gradient(180deg,var(--bg1),var(--bg2));
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
-    }
-    /* Particles behind everything */
-    #particles-js{position:fixed;inset:0;z-index:0;opacity:0.55;pointer-events:none}
+/* Hero */
+header.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;}
+.hero-card{background:rgba(255,255,255,0.02);padding:28px;border-radius:14px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(2,6,23,0.6);}
+h1{font-size:2.6rem;margin-bottom:6px;}
+.tag{color:var(--muted);margin-bottom:12px;font-size:1.05rem;}
+.desc{color:var(--muted);margin-bottom:18px;line-height:1.6;}
+.cta{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px 20px;border-radius:10px;font-weight:700;transition:transform .22s;box-shadow:0 6px 22px rgba(59,130,246,0.13);}
+.cta:hover{transform:translateY(-4px);}
 
-    /* cursor trail canvas */
-    #cursor-trail{position:fixed;inset:0;z-index:9999;pointer-events:none}
+/* Subtle motion background */
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(270deg,#3b82f6,#2563eb,#3b82f6);background-size:600% 600%;animation:bgmove 20s ease infinite;
+}
+@keyframes bgmove{0%{background-position:0 0;}50%{background-position:100% 0;}100%{background-position:0 0;}}
 
-    /* floating shapes for parallax */
-    .float{position:fixed;z-index:0;pointer-events:none;filter:blur(14px);opacity:0.12;mix-blend-mode:screen}
-    .f1{width:320px;height:320px;left:-100px;top:6%;background:radial-gradient(circle at 20% 20%,var(--accent),transparent);border-radius:50%}
-    .f2{width:220px;height:220px;right:-80px;top:44%;background:radial-gradient(circle at 70% 70%,var(--accent-2),transparent);border-radius:50%}
-    .f3{width:140px;height:140px;left:-60px;bottom:12%;background:radial-gradient(circle at 50% 50%,#22c55e,transparent);border-radius:50%}
+/* Floating icons */
+.floating-icon {
+  position:absolute;
+  font-size:28px;
+  opacity:0.6;
+  animation: floatAnim 6s ease-in-out infinite alternate;
+  pointer-events:none;
+  z-index:1;
+}
+.floating-icon:nth-child(2){animation-duration:5s;}
+.floating-icon:nth-child(3){animation-duration:7s;}
+@keyframes floatAnim{
+  0%{transform: translateY(0px);}
+  50%{transform: translateY(-16px);}
+  100%{transform: translateY(0px);}
+}
 
-    /* wrapper */
-    .wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:36px 18px 120px;}
+/* Sections */
+section{margin-top:28px;position:relative;z-index:2;}
+.hero-card h2{margin-bottom:12px;font-size:1.4rem;}
+.lead{color:var(--muted);line-height:1.65;}
 
-    /* hero */
-    header.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:36px 18px;position:relative;}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:28px;max-width:920px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(2,6,23,0.6)}
-    h1{font-size:2.6rem;margin:6px 0;letter-spacing:0.3px}
-    .tag{color:var(--muted);margin-bottom:12px;font-size:1.05rem}
-    .desc{color:var(--muted);margin-bottom:18px;line-height:1.6}
-    .cta{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px 20px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 22px rgba(59,130,246,0.13);transition:transform .22s}
-    .cta:hover{transform:translateY(-4px)}
+/* Skills grid */
+.skills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px;}
+.skill-item{padding:10px 14px;background:rgba(59,130,246,0.12);border-radius:8px;font-weight:700;transition:transform .3s, box-shadow .3s;}
+.skill-item:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(59,130,246,0.3);}
 
-    /* 3D-like animated background blob (SVG) */
-    .bg-blob{width:280px;height:280px;margin:0 auto 12px;display:block}
+/* Portfolio */
+.portfolio{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:14px;}
+.card{width:320px;background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;box-shadow:0 12px 38px rgba(0,0,0,0.6);transition:transform .4s,box-shadow .4s;overflow:hidden;}
+.card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 28px 70px rgba(0,0,0,0.6);}
+.thumb{height:160px;background:rgba(59,130,246,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--accent);position:relative;overflow:hidden;}
+.preview{position:absolute;inset:0;background:linear-gradient(120deg, rgba(59,130,246,0.12), rgba(96,165,250,0.06));transform:translateY(100%);transition:transform .45s;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:0.95rem;letter-spacing:0.6px;}
+.card:hover .preview{transform:translateY(0);}
 
-    /* sections */
-    section{margin-top:28px;position:relative;z-index:2}
-    h2{font-size:1.4rem;margin-bottom:12px}
-    .lead{color:var(--muted);line-height:1.65}
+/* Contact */
+.contact input,.contact textarea{width:100%;padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);margin-bottom:10px;}
+.submit{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700;transition:transform .2s;}
+.submit:hover{transform:translateY(-3px);}
+footer{margin-top:30px;text-align:center;color:var(--muted);padding-bottom:30px;}
 
-    /* skills - rotating cloud */
-    .skills-wrap{perspective:900px;display:flex;justify-content:center}
-    .skill-cloud{
-      width:300px;height:300px;position:relative;transform-style:preserve-3d;animation:spinCloud 18s linear infinite;
-    }
-    @keyframes spinCloud{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
-    .skill-item{
-      position:absolute;left:50%;top:50%;transform-origin:0 0;
-      color:var(--text);font-weight:700;padding:6px 10px;border-radius:6px;background:linear-gradient(90deg, rgba(59,130,246,0.12), rgba(37,99,235,0.06));backdrop-filter:blur(2px);
-      box-shadow:0 8px 20px rgba(3,8,29,0.5);
-      white-space:nowrap;font-size:0.95rem;
-    }
-
-    /* portfolio cards */
-    .portfolio{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
-    .card{width:320px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;box-shadow:0 12px 38px rgba(0,0,0,0.6);overflow:hidden;transition:transform .45s, box-shadow .45s}
-    .card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 80px rgba(0,0,0,0.65)}
-    .thumb{height:160px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--accent);background:linear-gradient(90deg, rgba(59,130,246,0.06), rgba(37,99,235,0.04));position:relative;overflow:hidden}
-    /* hover preview — a CSS animated preview (simulates video) */
-    .preview{
-      position:absolute;inset:0;background:linear-gradient(120deg, rgba(59,130,246,0.12), rgba(96,165,250,0.06));
-      transform:translateY(100%);transition:transform .45s;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:0.95rem;
-      letter-spacing:0.6px;
-    }
-    .card:hover .preview{transform:translateY(0)}
-
-    /* services */
-    .services{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-    .service{width:240px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));text-align:center;border:1px solid rgba(255,255,255,0.02);transition:transform .3s}
-    .service:hover{transform:translateY(-6px)}
-
-    /* contact form */
-    .contact{max-width:760px;margin:0 auto}
-    .contact input,.contact textarea{width:100%;padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);margin-bottom:10px}
-    .submit{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-    footer{margin-top:30px;text-align:center;color:var(--muted);padding-bottom:30px}
-
-    /* back to top btn */
-    #toTop{position:fixed;right:16px;bottom:16px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px;border-radius:10px;color:white;display:none;z-index:999;box-shadow:0 10px 30px rgba(59,130,246,0.14)}
-
-    /* responsive */
-    @media(max-width:900px){h1{font-size:2rem}.card{width:100%}.skill-cloud{width:230px;height:230px}.skill-item{font-size:0.9rem}}
-  </style>
+@media(max-width:900px){h1{font-size:2rem}.card{width:100%}}
+</style>
 </head>
 <body>
 
-  <!-- Particles -->
-  <div id="particles-js"></div>
+<div class="wrap">
 
-  <!-- cursor trail -->
-  <canvas id="cursor-trail"></canvas>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-card" data-aos="fade-up">
+    <h1>MD TALHA</h1>
+    <div class="tag">Creative Designer | Video Editor | Brand Marketer</div>
+    <div class="desc">Designing brands, social ads & engaging video content that help businesses grow online. Fast learner, ready for freelance projects.</div>
+    <div style="margin-top:16px"><a class="cta" href="#contact">Hire Me — Let's Talk</a></div>
+  </div>
 
-  <!-- floating parallax shapes -->
-  <div class="float f1" data-depth="0.12"></div>
-  <div class="float f2" data-depth="0.07"></div>
-  <div class="float f3" data-depth="0.10"></div>
+  <!-- Floating subtle icons -->
+  <div class="floating-icon" style="top:20%; left:10%;">🎨</div>
+  <div class="floating-icon" style="top:50%; left:80%;">🎬</div>
+  <div class="floating-icon" style="top:70%; left:40%;">💻</div>
+</header>
 
-  <div class="wrap">
+<!-- ABOUT -->
+<section id="about" data-aos="fade-up">
+  <div class="hero-card">
+    <h2>About Me</h2>
+    <p class="lead">I’m MD TALHA — a versatile digital creator focused on banner & logo design, content strategy, video ads, and web design. I combine creativity with practical marketing to deliver results. New to freelancing but ready to deliver high quality work.</p>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <header class="hero" role="banner">
-      <div class="hero-card" data-aos="fade-up">
-        <!-- Animated inline SVG blob (subtle motion) -->
-        <svg class="bg-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
-          <g transform="translate(100 100)">
-            <path fill="url(#lg)" opacity="0.12">
-              <animate attributeName="d" dur="8s" repeatCount="indefinite"
-                values="
-                  M44.7,-64.8C57.4,-53.9,66.3,-39.9,70.2,-24.8C74.1,-9.7,73,- -7.6,66.3,3.8C59.5,15.2,47.2,23,36.8,33.5C26.5,44,18.1,57.1,4.6,64.8C-8.9,72.5,-24.9,74.8,-38.7,69.7C-52.4,64.6,-64.1,52.1,-70.5,36.9C-76.9,21.8,-78,3.9,-73.4,-12.3C-68.8,-28.6,-58.6,-44.1,-45.5,-55C-32.3,-65.8,-16.1,-72.1,-0.1,-72C15.9,-71.9,31.9,-65.8,44.7,-64.8Z;
-                  M47.2,-62.1C61.9,-51.9,71.1,-38.6,74.5,-24.9C77.9,-11.2,75.6,3.1,69.7,16.2C63.9,29.2,54.5,41,41.6,48.4C28.7,55.9,12.3,58.9,-3.2,62.1C-18.6,65.3,-37.3,68.9,-50.3,62.2C-63.2,55.5,-70.4,38.5,-74.3,20.8C-78.2,3.1,-78.8,-15.1,-70.1,-28.1C-61.4,-41.1,-43.3,-48.9,-27.3,-57.1C-11.4,-65.4,2.4,-73.9,16.6,-74.9C30.8,-75.9,47.0,-69.6,47.2,-62.1Z;
-                  M44.7,-64.8C57.4,-53.9,66.3,-39.9,70.2,-24.8C74.1,-9.7,73,- -7.6,66.3,3.8C59.5,15.2,47.2,23,36.8,33.5C26.5,44,18.1,57.1,4.6,64.8C-8.9,72.5,-24.9,74.8,-38.7,69.7C-52.4,64.6,-64.1,52.1,-70.5,36.9C-76.9,21.8,-78,3.9,-73.4,-12.3C-68.8,-28.6,-58.6,-44.1,-45.5,-55C-32.3,-65.8,-16.1,-72.1,-0.1,-72C15.9,-71.9,31.9,-65.8,44.7,-64.8Z" />
-            </path>
-          </g>
-        </svg>
+<!-- SKILLS -->
+<section id="skills" data-aos="fade-up">
+  <div class="hero-card">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div class="skill-item">Banner Design</div>
+      <div class="skill-item">Logo Design</div>
+      <div class="skill-item">Video Editing</div>
+      <div class="skill-item">Canva</div>
+      <div class="skill-item">Content Strategy</div>
+      <div class="skill-item">Copywriting</div>
+      <div class="skill-item">Web Design</div>
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">YouTube Ads</div>
+      <div class="skill-item">Photo Editing</div>
+    </div>
+  </div>
+</section>
 
-        <h1>MD TALHA</h1>
-        <div class="tag">Creative Designer | Video Editor | Brand Marketer</div>
-        <div class="desc">Designing brands, social ads & engaging video content that help businesses grow online. Fast learner, ready for freelance projects.</div>
-        <div style="margin-top:16px">
-          <a class="cta" href="#contact">Hire Me — Let's Talk</a>
-        </div>
+<!-- PORTFOLIO -->
+<section id="portfolio" data-aos="fade-up">
+  <div class="hero-card">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <article class="card" data-aos="flip-left">
+        <div class="thumb">🖼️<div class="preview">Preview — Banner</div></div>
+        <h3>Banner Design — Social Campaign</h3>
+        <p>Sample banner mockup for product launch — optimized for social feed and conversions.</p>
+      </article>
+
+      <article class="card" data-aos="flip-left" data-aos-delay="100">
+        <div class="thumb">🖼️<div class="preview">Preview — Logo</div></div>
+        <h3>Logo & Brand Identity</h3>
+        <p>Concept logo for a fictional brand — modern, scalable and brand-ready.</p>
+      </article>
+
+      <article class="card" data-aos="flip-left" data-aos-delay="200">
+        <div class="thumb">🎬<div class="preview">Preview — Video</div></div>
+        <h3>Video Ad — Promo 30s</h3>
+        <p>Short promotional ad edited for YouTube/Instagram with a strong hook & CTA.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-aos="fade-up">
+  <div class="hero-card contact">
+    <h2>Contact Me</h2>
+    <p class="lead" style="text-align:center">Email me directly — <strong>ansariaourangjeb@gmail.com</strong></p>
+    <form id="contactForm">
+      <input id="name" type="text" placeholder="Your name" required />
+      <input id="email" type="email" placeholder="Your email" required />
+      <textarea id="message" placeholder="Your message" rows="5" required></textarea>
+      <div style="text-align:center;margin-top:10px">
+        <button class="submit" type="submit">Send Message</button>
       </div>
-    </header>
+    </form>
+  </div>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about" data-aos="fade-up">
-      <div class="hero-card">
-        <h2>About Me</h2>
-        <p class="lead">I’m MD TALHA — a versatile digital creator focused on banner & logo design, content strategy, video ads, and web design. I combine creativity with practical marketing to deliver results. New to freelancing but ready to deliver high quality work.</p>
-      </div>
-    </section>
+<footer>
+  © 2025 MD TALHA • ansariaourangjeb@gmail.com
+</footer>
+</div>
 
-    <!-- SKILLS: rotating 3D cloud -->
-    <section id="skills" data-aos="fade-up">
-      <div class="hero-card">
-        <h2>My Skills</h2>
-        <div class="skills-wrap" aria-hidden="false">
-          <div class="skill-cloud" id="skillCloud">
-            <!-- positions calculated by JS below -->
-            <div class="skill-item">Banner Design</div>
-            <div class="skill-item">Logo Design</div>
-            <div class="skill-item">Video Editing</div>
-            <div class="skill-item">Canva</div>
-            <div class="skill-item">Content Strategy</div>
-            <div class="skill-item">Copywriting</div>
-            <div class="skill-item">Web Design</div>
-            <div class="skill-item">JavaScript</div>
-            <div class="skill-item">YouTube Ads</div>
-            <div class="skill-item">Photo Editing</div>
-          </div>
-        </div>
-        <p class="lead" style="text-align:center;margin-top:14px">Hover the cloud (or move device) to slow rotation and inspect skills.</p>
-      </div>
-    </section>
+<!-- AOS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration:800, once:true });
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" data-aos="fade-up">
-      <div class="hero-card">
-        <h2>Portfolio</h2>
-        <div class="portfolio">
-          <article class="card" data-aos="flip-left">
-            <div class="thumb">
-              🖼️
-              <div class="preview">Preview — Animated Mockup</div>
-            </div>
-            <h3>Banner Design — Social Campaign</h3>
-            <p>Sample banner mockup for product launch — optimized for social feed and conversions.</p>
-          </article>
-
-          <article class="card" data-aos="flip-left" data-aos-delay="100">
-            <div class="thumb">
-              🖼️
-              <div class="preview">Preview — Logo Animation</div>
-            </div>
-            <h3>Logo & Brand Identity</h3>
-            <p>Concept logo for a fictional brand — modern, scalable and brand-ready.</p>
-          </article>
-
-          <article class="card" data-aos="flip-left" data-aos-delay="200">
-            <div class="thumb">
-              🎬
-              <div class="preview">Preview — Video Clip</div>
-            </div>
-            <h3>Video Ad — Promo 30s</h3>
-            <p>Short promotional ad edited for YouTube/Instagram with a strong hook & CTA.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" data-aos="fade-up">
-      <div class="hero-card">
-        <h2>Services</h2>
-        <div class="services">
-          <div class="service" data-aos="zoom-in">
-            <svg viewBox="0 0 64 64" width="56" height="56"><path d="M8 44h48" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
-            <div>Custom Design Solutions</div>
-          </div>
-
-          <div class="service" data-aos="zoom-in" data-aos-delay="80">
-            <svg viewBox="0 0 64 64" width="56" height="56"><rect x="10" y="16" width="44" height="32" rx="4" stroke="#3b82f6" stroke-width="3" fill="none"/></svg>
-            <div>Content & Marketing Strategy</div>
-          </div>
-
-          <div class="service" data-aos="zoom-in" data-aos-delay="160">
-            <svg viewBox="0 0 64 64" width="56" height="56"><path d="M18 24 L46 32 L18 40 Z" stroke="#3b82f6" stroke-width="2" fill="none"/></svg>
-            <div>Video Production & Ads</div>
-          </div>
-
-          <div class="service" data-aos="zoom-in" data-aos-delay="240">
-            <svg viewBox="0 0 64 64" width="56" height="56"><path d="M14 36h36" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
-            <div>Web Design & Hosting</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" data-aos="fade-up">
-      <div class="hero-card contact">
-        <h2>Contact Me</h2>
-        <p class="lead" style="text-align:center">Email me directly — <strong>ansariaourangjeb@gmail.com</strong></p>
-        <form id="contactForm">
-          <input id="name" type="text" placeholder="Your name" required />
-          <input id="email" type="email" placeholder="Your email" required />
-          <textarea id="message" placeholder="Your message" rows="5" required></textarea>
-          <div style="text-align:center;margin-top:10px">
-            <button class="submit" type="submit">Send Message</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 MD TALHA • ansariaourangjeb@gmail.com
-    </footer>
-
-  </div> <!-- wrap -->
-
-  <button id="toTop" title="Back to top">↑</button>
-
-  <!-- AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-  <script>
-  /* ---------- AOS ---------- */
-  AOS.init({ duration:900, once:true });
-
-  /* ---------- Particles ---------- */
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {"value": 40,"density": {"enable": true,"value_area": 700}},
-      "color": {"value": "#3b82f6"},
-      "shape": {"type": "circle"},
-      "opacity": {"value": 0.22},
-      "size": {"value": 3,"random": true},
-      "line_linked": {"enable": true,"distance": 160,"color": "#3b82f6","opacity": 0.12,"width": 1},
-      "move": {"enable": true,"speed": 2}
-    },
-    "interactivity": {"events": {"onhover": {"enable": true,"mode": "repulse"}},"modes": {"repulse": {"distance": 100}}},
-    "retina_detect": true
-  });
-
-  /* ---------- Back to top ---------- */
-  const toTop = document.getElementById('toTop');
-  window.addEventListener('scroll', ()=>{ if(window.scrollY>300) toTop.style.display='block'; else toTop.style.display='none'; });
-  toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-
-  /* ---------- Contact form (mailto) ---------- */
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = encodeURIComponent(document.getElementById('name').value || '');
-    const from = encodeURIComponent(document.getElementById('email').value || '');
-    const body = encodeURIComponent(document.getElementById('message').value || '') + '%0A%0A' + 'From: ' + name + ' (' + from + ')';
-    const subject = encodeURIComponent('Website message from ' + (name || 'visitor'));
-    window.location.href = 'mailto:ansariaourangjeb@gmail.com?subject=' + subject + '&body=' + body;
-  });
-
-  /* ---------- Cursor glow trail (canvas) ---------- */
-  (function(){
-    const canvas = document.getElementById('cursor-trail');
-    if(!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = innerWidth;
-    let h = canvas.height = innerHeight;
-    window.addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; });
-    const particles = [];
-    function addParticle(x,y){
-      particles.push({x,y,r:Math.random()*6+2, vx:(Math.random()-0.5)*1.2, vy:(Math.random()-0.5)*1.2, life:60});
-      if(particles.length>140) particles.splice(0, particles.length-60);
-    }
-    window.addEventListener('mousemove', (e)=>{ addParticle(e.clientX,e.clientY); });
-    // support touch move too
-    window.addEventListener('touchmove', (ev)=>{ const t = ev.touches[0]; if(t) addParticle(t.clientX, t.clientY); }, {passive:true});
-    function tick(){
-      ctx.clearRect(0,0,w,h);
-      for(let i=particles.length-1;i>=0;i--){
-        const p=particles[i];
-        p.x+=p.vx; p.y+=p.vy; p.life--;
-        ctx.beginPath();
-        ctx.fillStyle = 'rgba(59,130,246,' + (p.life/60*0.55) + ')';
-        ctx.shadowBlur=10; ctx.shadowColor='rgb(59,130,246)';
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-        if(p.life<=0) particles.splice(i,1);
-      }
-      requestAnimationFrame(tick);
-    }
-    tick();
-  })();
-
-  /* ---------- Skill cloud positioning & interaction ---------- */
-  (function(){
-    const cloud = document.getElementById('skillCloud');
-    if(!cloud) return;
-    const items = Array.from(cloud.children);
-    const R = 110; // radius
-    // place items on sphere coordinates (simple distribution)
-    function place(){
-      const n = items.length;
-      items.forEach((el, i)=>{
-        const phi = Math.acos(-1 + (2 * i + 1) / n);
-        const theta = Math.sqrt(n * Math.PI) * phi;
-        const x = R * Math.cos(theta) * Math.sin(phi);
-        const y = R * Math.sin(theta) * Math.sin(phi);
-        const z = R * Math.cos(phi);
-        // project 3D to 2D-ish, adjust scale via z
-        const scale = (z + R) / (2*R) * 0.8 + 0.5;
-        el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
-        el.style.zIndex = Math.round((z + R));
-        el.style.opacity = 0.85;
-      });
-    }
-    place();
-    // slow down on hover/touch
-    cloud.addEventListener('mouseenter', ()=> cloud.style.animationPlayState='paused');
-    cloud.addEventListener('mouseleave', ()=> cloud.style.animationPlayState='running');
-    cloud.addEventListener('touchstart', ()=> cloud.style.animationPlayState='paused', {passive:true});
-    cloud.addEventListener('touchend', ()=> cloud.style.animationPlayState='running', {passive:true});
-  })();
-
-  /* ---------- Parallax small movement for float shapes ---------- */
-  (function(){
-    const floats = document.querySelectorAll('.float');
-    window.addEventListener('scroll', ()=>{
-      const s = window.scrollY;
-      floats.forEach((f, idx)=>{
-        const depth = parseFloat(f.getAttribute('data-depth')) || (idx+1)*0.03;
-        f.style.transform = `translateY(${s * depth}px)`;
-      });
-    }, {passive:true});
-  })();
-  </script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = encodeURIComponent(document.getElementById('name').value || '');
+  const from = encodeURIComponent(document.getElementById('email').value || '');
+  const body = encodeURIComponent(document.getElementById('message').value || '') + '%0A%0A' + 'From: ' + name + ' (' + from + ')';
+  const subject = encodeURIComponent('Website message from ' + (name || 'visitor'));
+  window.location.href = 'mailto:ansariaourangjeb@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
 </body>
-          </html>
+</html>
