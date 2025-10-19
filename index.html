@@ -113,6 +113,13 @@
             border: 2px solid #14b8a6; /* Teal border */
             box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
         }
+        /* Fix for skill boxes: ensure text is small and wraps correctly */
+        .skill-text {
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25rem;
+            font-weight: 700;
+            word-wrap: break-word; /* Ensure long words break */
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 overflow-x-hidden">
@@ -130,7 +137,7 @@
                         <a href="#about" class="text-gray-300 hover:bg-cyan-500/20 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">About</a>
                         <a href="#skills" class="text-gray-300 hover:bg-cyan-500/20 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">Expertise</a>
                         <a href="#projects" class="text-gray-300 hover:bg-cyan-500/20 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">Projects</a>
-                        <a href="#contact" class="text-white bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-lg">Get in Touch</a>
+                        <a href="#contact" class="text-white bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-lg">Contact</a>
                     </div>
                 </div>
                  <div class="md:hidden">
@@ -148,7 +155,7 @@
                     <span class="cta-gradient bg-clip-text text-transparent drop-shadow-2xl">Creation & Optimization</span>
                 </h1>
                 <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-400 font-light">
-                    I deliver high-conversion video ads, memorable design assets, and end-to-end marketing strategy to accelerate your business growth.
+                    I deliver high-conversion video ads, memorable design assets, and end-to-end marketing strategies to accelerate your business growth.
                 </p>
                 <div class="mt-10 flex justify-center gap-6">
                     <a href="#projects" class="cta-gradient text-white font-bold py-4 px-10 rounded-xl shadow-2xl shadow-cyan-500/50 transition-all duration-300 hover:shadow-cyan-400/70 text-lg">View High-Impact Projects</a>
@@ -163,7 +170,7 @@
                          <h2 class="text-sm font-semibold leading-7 text-teal-400 uppercase tracking-widest">About SWIFTLANCER</h2>
                         <p class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Where Strategy Meets Stunning Visuals</p>
                         <p class="mt-8 text-xl leading-9 text-gray-300">
-                            I am a dedicated **Digital Creator & Marketing Specialist** committed to precision and performance. My work bridges the gap between creative vision and strategic execution. With robust expertise in **brand marketing**, **professional video production**, and **responsive web design**, I ensure every asset produced is not just visually appealing, but systematically optimized for maximum client return on investment.
+                            I am a dedicated **Digital Creator and Marketing Specialist** committed to precision and performance. My work bridges the gap between creative vision and strategic execution. With robust expertise in **brand marketing**, **professional video production**, and **responsive web design**, I ensure every asset produced is not just visually appealing, but systematically optimized for maximum client Return on Investment (ROI).
                         </p>
                     </div>
                 </div>
@@ -180,29 +187,29 @@
                     </p>
                 </div>
                 <div class="mt-16 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
-                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">Brand Strategy</p>
+                    <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Brand Strategy</p>
                     </div>
-                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">Conversion Copywriting</p>
+                    <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Conversion Copywriting</p>
                     </div>
-                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">High-Impact Video Ads</p>
+                    <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">High-Impact Video Ads</p>
                     </div>
-                     <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">Logo/Identity Design</p>
+                     <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Logo & Identity Design</p>
                     </div>
-                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">Canva & Adobe Suite</p>
+                    <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Canva & Adobe Suite</p>
                     </div>
-                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">Videography/Editing</p>
+                    <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Videography/Editing</p>
                     </div>
-                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">Responsive Web Design</p>
+                    <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Responsive Web Design</p>
                     </div>
-                     <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
-                        <p class="font-extrabold text-white">JavaScript (Conceptual)</p>
+                     <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="skill-text text-white">Conceptual JavaScript</p>
                     </div>
                 </div>
             </div>
@@ -223,7 +230,7 @@
                         <div id="visual-zenith" class="project-visual-container flex items-center justify-center"></div>
                         <div class="p-8">
                             <h3 class="text-2xl font-black text-white">Zenith AI Launch Strategy</h3>
-                            <p class="mt-3 text-gray-400">Developed a strategic content funnel and produced a **high-conversion video ad script** to maximize subscription sign-ups.</p>
+                            <p class="mt-3 text-gray-400">Developed a strategic content funnel and produced a high-conversion video ad script to maximize subscription sign-ups.</p>
                             <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Video Ads, Content Strategy, Copywriting, A/B Testing</p>
                             <a href="javascript:void(0)" data-project-id="zenith" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">Analyze Case Study &rarr;</a>
                         </div>
@@ -232,8 +239,8 @@
                         <div id="visual-greenfork" class="project-visual-container flex items-center justify-center"></div>
                         <div class="p-8">
                             <h3 class="text-2xl font-black text-white">The Green Fork Rebranding</h3>
-                            <p class="mt-3 text-gray-400">Designed a complete visual identity, including a modern **logo**, color system, and UI standards for a premium organic eatery.</p>
-                            <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Logo Design, Brand Identity, Canva, Typography Pairing, UI/UX</p>
+                            <p class="mt-3 text-gray-400">Designed a complete visual identity, including a modern logo, color system, and UI standards for a premium organic eatery.</p>
+                            <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Logo Design, Brand Identity, Canva, Typography, UI/UX</p>
                             <a href="javascript:void(0)" data-project-id="greenfork" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">View Design Strategy &rarr;</a>
                         </div>
                     </div>
@@ -241,7 +248,7 @@
                         <div id="visual-toolkit" class="project-visual-container flex items-center justify-center"></div>
                         <div class="p-8">
                             <h3 class="text-2xl font-black text-white">Freelancer Toolkit Page</h3>
-                            <p class="mt-3 text-gray-400">Conceptualized and wrote the high-conversion copy and created the design blueprint for a **responsive lead generation landing page**.</p>
+                            <p class="mt-3 text-gray-400">Conceptualized and wrote the high-conversion copy and created the design blueprint for a responsive lead generation landing page.</p>
                             <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Responsive Web Design, Lead Generation, Copywriting, UX Flow</p>
                             <a href="javascript:void(0)" data-project-id="toolkit" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">Explore Blueprint &rarr;</a>
                         </div>
@@ -528,13 +535,13 @@
             zenith: {
                 title: "Zenith AI Launch Strategy: Maximizing Conversions",
                 content: `
-                    <p><strong>The Challenge:</strong> Launch a new, high-ticket AI subscription service into a crowded market. The primary goal was to achieve a minimum 3.5% CVR (Conversion Rate) on paid social media traffic and establish a clear value proposition.</p>
+                    <p><strong>The Challenge:</strong> Launch a new, high-ticket AI subscription service into a crowded market. The primary goal was to achieve a minimum 3.5% Conversion Rate (CVR) on paid social media traffic and establish a clear value proposition.</p>
                     <p><strong>The Strategy:</strong> We implemented a dual-path funnel. Path A utilized a high-impact, 15-second **video ad** focused purely on the *pain point* and the *immediate result* (e.g., "Stop Wasting Time on X. Start Profiting Now."). Path B used a longer-form video (60s) for cold audiences, focusing on the **product mechanics** and demonstrating the **AI Pipeline** (visualized below).</p>
                     <div class="svg-container-modal">${zenithSVGVisual}</div>
                     <h3 class="text-3xl font-bold text-teal-400 mt-8 mb-4">Results & Impact:</h3>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li>**Achieved 4.1% CVR** on Path A (Short Video) in the first 30 days, exceeding the target by 0.6%.</li>
-                        <li>The longer-form video (Path B) secured a **30% lower CPA** (Cost Per Acquisition) for warm audiences, indicating strong educational value.</li>
+                        <li>The longer-form video (Path B) secured a **30% lower Cost Per Acquisition (CPA)** for warm audiences, indicating strong educational value.</li>
                         <li>**Key Takeaway:** Strategic video length and targeting were crucial: short, punchy videos for initial conversion; detailed content for later-stage trust-building.</li>
                     </ul>
                 `
@@ -557,11 +564,11 @@
                 title: "Freelancer Toolkit Page: Lead Generation Blueprint",
                 content: `
                     <p><strong>The Challenge:</strong> Design and write a high-performance landing page to capture emails by offering a "Freelancer Success Toolkit" magnet. The page had to be extremely fast and perfectly responsive to maximize mobile conversions.</p>
-                    <p><strong>The Strategy:</strong> The blueprint followed a classic AIDA (Attention, Interest, Desire, Action) structure, featuring a clear, benefit-driven headline, social proof (placeholder testimonials), and a single, unmissable CTA above the fold. The structural design prioritized a **mobile-first stacking order** to minimize scroll depth on smaller screens.</p>
+                    <p><strong>The Strategy:</strong> The blueprint followed a classic AIDA (Attention, Interest, Desire, Action) structure, featuring a clear, benefit-driven headline, social proof (placeholder testimonials), and a single, unmissable Call to Action (CTA) above the fold. The structural design prioritized a **mobile-first stacking order** to minimize scroll depth on smaller screens.</p>
                     <div class="svg-container-modal">${toolkitSVGVisual}</div>
                     <h3 class="text-3xl font-bold text-teal-400 mt-8 mb-4">Blueprint & Technical Focus:</h3>
                     <ul class="list-disc list-inside space-y-2 ml-4">
-                        <li>**Headline/Copy:** Utilized **UVP (Unique Value Proposition)** copywriting, focusing on specific, quantified benefits (e.g., "Save 10 hours a week").</li>
+                        <li>**Headline/Copy:** Utilized **Unique Value Proposition (UVP)** copywriting, focusing on specific, quantified benefits (e.g., "Save 10 hours a week").</li>
                         <li>**A/B Test Ready:** The design uses modular sections to facilitate easy A/B testing of the main visual and CTA copy.</li>
                         <li>**Responsive Design Logic:** The desktop's three-column content section collapses perfectly into a stacked, single-column layout on mobile, ensuring a seamless user experience (see diagram above).</li>
                     </ul>
