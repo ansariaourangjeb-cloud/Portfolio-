@@ -124,8 +124,10 @@
 </head>
 <body class="bg-gray-900 text-gray-200 overflow-x-hidden">
 
+    <!-- This canvas is where the 3D animation will be rendered (Particle Field) -->
     <canvas id="bg-canvas"></canvas>
 
+    <!-- Header / Navigation -->
     <header id="header-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 section-card mx-4 my-4 rounded-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -141,12 +143,14 @@
                     </div>
                 </div>
                  <div class="md:hidden">
-                    </div>
+                    <!-- Mobile menu button can be added here if needed -->
+                </div>
             </div>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="home" class="h-screen flex items-center justify-center text-center relative">
             <div class="absolute inset-0 bg-gray-900/40"></div>
             <div class="z-10 px-4 pt-20">
@@ -163,6 +167,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about" class="py-24 sm:py-40">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="section-card rounded-3xl p-8 md:p-14 lg:p-20">
@@ -177,6 +182,7 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="py-24 sm:py-40">
              <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="max-w-2xl mx-auto lg:text-center">
@@ -187,6 +193,7 @@
                     </p>
                 </div>
                 <div class="mt-16 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                    <!-- Skills - Using the new 'skill-text' class -->
                     <div class="section-card p-4 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
                         <p class="skill-text text-white">Brand Strategy</p>
                     </div>
@@ -215,6 +222,7 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="py-24 sm:py-40">
              <div class="max-w-7xl mx-auto px-6 lg:px-8">
                  <div class="max-w-2xl mx-auto lg:text-center">
@@ -226,7 +234,9 @@
                 </div>
 
                 <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Project Card 1: Zenith AI Launch Campaign (Video Ads & Content Strategy) -->
                     <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                        <!-- INJECTED VISUAL BANNER -->
                         <div id="visual-zenith" class="project-visual-container flex items-center justify-center"></div>
                         <div class="p-8">
                             <h3 class="text-2xl font-black text-white">Zenith AI Launch Strategy</h3>
@@ -235,7 +245,9 @@
                             <a href="javascript:void(0)" data-project-id="zenith" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">Analyze Case Study &rarr;</a>
                         </div>
                     </div>
-                    <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                    <!-- Project Card 2: The Green Fork Eatery Rebrand (Logo & Brand Design) -->
+                     <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                        <!-- INJECTED VISUAL BANNER -->
                         <div id="visual-greenfork" class="project-visual-container flex items-center justify-center"></div>
                         <div class="p-8">
                             <h3 class="text-2xl font-black text-white">The Green Fork Rebranding</h3>
@@ -244,7 +256,9 @@
                             <a href="javascript:void(0)" data-project-id="greenfork" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">View Design Strategy &rarr;</a>
                         </div>
                     </div>
-                    <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                    <!-- Project Card 3: Freelancer Success Toolkit (Web Design & Content Writing) -->
+                     <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                        <!-- INJECTED VISUAL BANNER -->
                         <div id="visual-toolkit" class="project-visual-container flex items-center justify-center"></div>
                         <div class="p-8">
                             <h3 class="text-2xl font-black text-white">Freelancer Toolkit Page</h3>
@@ -257,6 +271,7 @@
              </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="py-24 sm:py-40">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                  <div class="section-card rounded-3xl p-8 md:p-14 lg:p-20 text-center">
@@ -265,7 +280,8 @@
                        Don't just launch—**dominate**. Send me a message, and let's craft a bespoke strategy to hit your key performance indicators.
                     </p>
                     <div class="mt-12">
-                        <a href="mailto:Ansariaourangjeb@gmail.com" class="cta-gradient text-white font-bold py-4 px-12 rounded-xl shadow-2xl shadow-cyan-500/50 transition-all duration-300 hover:shadow-cyan-400/70 text-xl">
+                        <!-- FIX: Adjusted font size and padding to ensure the email address fits gracefully on mobile -->
+                        <a href="mailto:Ansariaourangjeb@gmail.com" class="cta-gradient text-white font-bold py-4 px-6 md:px-12 rounded-xl shadow-2xl shadow-cyan-500/50 transition-all duration-300 hover:shadow-cyan-400/70 text-base md:text-xl inline-block max-w-full overflow-hidden text-ellipsis">
                             Ansariaourangjeb@gmail.com
                         </a>
                     </div>
@@ -274,18 +290,21 @@
         </section>
     </main>
     
+    <!-- Scroll To Top Button -->
     <button id="scrollTopButton" aria-label="Scroll to top" class="fixed bottom-8 right-8 p-4 bg-cyan-600 text-white rounded-full shadow-xl opacity-0 pointer-events-none hover:bg-cyan-500 transition-all duration-300 transform hover:scale-110">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
     
+    <!-- Footer -->
     <footer class="py-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-gray-500">
             <p>&copy; 2024 SWIFTLANCER | Digital Creative Strategy. All Rights Reserved.</p>
         </div>
     </footer>
     
+    <!-- PROJECT CASE STUDY MODAL OVERLAY -->
     <div id="caseStudyModal" class="modal-overlay">
         <div class="modal-content section-card rounded-3xl relative">
             <button id="closeModal" aria-label="Close" class="absolute top-6 right-6 p-2 text-white bg-gray-800/80 rounded-full hover:bg-gray-700/80 transition-colors shadow-lg">
@@ -295,9 +314,14 @@
             </button>
             <h2 id="modalTitle" class="text-5xl font-black text-white mb-8 border-b border-teal-400/50 pb-3"></h2>
             <div id="modalContent" class="text-lg text-gray-300 space-y-6 leading-relaxed">
-                </div>
+                <!-- Case study content goes here -->
+            </div>
         </div>
     </div>
+    <!-- END MODAL OVERLAY -->
+
+
+    <!-- Three.js for 3D graphics -->
     <script type="importmap">
         {
             "imports": {
@@ -422,7 +446,7 @@
 
         // --- VISUAL & MODAL CONTENT DEFINITIONS (PROFESSIONAL SVGs) ---
 
-        // NEW 1: Zenith AI (Data/Conversion) - 3D Holographic Data Pipeline
+        // 1: Zenith AI (Data/Conversion) - 3D Holographic Data Pipeline
         const zenithSVGVisual = `
             <svg viewBox="0 0 800 190" class="w-full h-full p-4" preserveAspectRatio="xMidYMid meet">
                 <rect x="0" y="0" width="800" height="190" fill="#0f172a" rx="10"/>
@@ -440,8 +464,10 @@
                     </filter>
                 </defs>
 
+                <!-- 3D Perspective Grid -->
                 <path d="M 50 170 L 750 170 L 700 30 L 0 30 Z" fill="rgba(30, 41, 59, 0.4)" stroke="#334155" stroke-width="1"/>
                 
+                <!-- Data Flow Path 1 (Chaotic/Input) -->
                 <path 
                     d="M 100 150 C 250 80, 350 120, 450 100" 
                     fill="none" 
@@ -451,9 +477,11 @@
                     filter="url(#glow)"
                 />
                 
+                <!-- Data Processor / Transformation Gate -->
                 <rect x="420" y="70" width="60" height="60" fill="url(#zenithGrad)" opacity="0.4" rx="5" filter="url(#glow)"/>
                 <text x="450" y="105" text-anchor="middle" font-family="Inter" font-size="20" fill="#fff" font-weight="900">AI</text>
                 
+                <!-- Optimized Path 2 (Output/Conversion) -->
                 <path 
                     d="M 480 100 C 580 80, 680 60, 750 60" 
                     fill="none" 
@@ -463,29 +491,34 @@
                     filter="url(#glow)"
                 />
                 
+                <!-- Conversion Node -->
                 <circle cx="750" cy="60" r="10" fill="#06b6d4" filter="url(#glow)"/>
                 <text x="750" y="40" text-anchor="middle" font-family="Inter" font-size="20" fill="#06b6d4" font-weight="bold">RESULT</text>
             </svg>
         `;
         
-        // NEW 2: The Green Fork (Branding/Logo) - Dark Mode UI Showcase
+        // 2: The Green Fork (Branding/Logo) - Dark Mode UI Showcase
         const greenForkSVGVisual = `
             <svg viewBox="0 0 800 190" class="w-full h-full p-4" preserveAspectRatio="xMidYMid meet">
                 <rect x="0" y="0" width="800" height="190" fill="#0f172a" rx="10"/>
 
+                <!-- Mockup Window Frame (Dark Mode) -->
                 <rect x="50" y="30" width="700" height="130" fill="#1f2937" rx="10" stroke="#374151" stroke-width="2"/>
                 <circle cx="65" cy="45" r="5" fill="#f87171"/>
                 <circle cx="80" cy="45" r="5" fill="#facc15"/>
                 <circle cx="95" cy="45" r="5" fill="#4ade80"/>
 
+                <!-- Logo Grid Area (Left) -->
                 <rect x="80" y="60" width="120" height="80" fill="#0f172a" rx="5"/>
                 <text x="140" y="105" text-anchor="middle" font-family="Inter" font-size="50" fill="#10b981" font-weight="900">G</text>
                 <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="14" fill="#6ee7b7">Logo Mockup</text>
 
+                <!-- Typography Showcase Area (Right) -->
                 <text x="300" y="80" font-family="Inter" font-size="30" fill="#10b981" font-weight="900">Brand Headline</text>
                 <text x="300" y="115" font-family="Inter" font-size="18" fill="#e2e8f0" font-weight="500">The Green Fork Eatery</text>
                 <text x="300" y="135" font-family="Inter" font-size="14" fill="#94a3b8" font-weight="300">Modern, Sustainable, Organic.</text>
 
+                <!-- Color Palette (Bottom Right) -->
                 <rect x="600" y="70" width="30" height="60" fill="#10b981" rx="4"/>
                 <rect x="640" y="70" width="30" height="60" fill="#facc15" rx="4"/>
                 <rect x="680" y="70" width="30" height="60" fill="#4ade80" rx="4"/>
@@ -493,24 +526,27 @@
             </svg>
         `;
 
-        // NEW 3: Freelancer Toolkit (Web Design/UX) - Responsive Blueprint
+        // 3: Freelancer Toolkit (Web Design/UX) - Responsive Blueprint
         const toolkitSVGVisual = `
             <svg viewBox="0 0 800 190" class="w-full h-full p-4" preserveAspectRatio="xMidYMid meet">
                 <rect x="0" y="0" width="800" height="190" fill="#0f172a" rx="10"/>
 
                 <text x="50" y="25" font-family="Inter" font-size="16" fill="#06b6d4" font-weight="500">Responsive Blueprint</text>
                 
+                <!-- Desktop View -->
                 <rect x="50" y="40" width="300" height="120" fill="#1f2937" rx="5" stroke="#4f46e5" stroke-width="2"/>
                 <text x="200" y="55" text-anchor="middle" font-family="Inter" font-size="12" fill="#94a3b8">Desktop (3 Columns)</text>
                 <rect x="60" y="65" width="80" height="85" fill="#374151" rx="3"/>
                 <rect x="145" y="65" width="80" height="85" fill="#374151" rx="3"/>
                 <rect x="230" y="65" width="80" height="85" fill="#374151" rx="3"/>
                 
+                <!-- Tablet View -->
                 <rect x="380" y="40" width="200" height="120" fill="#1f2937" rx="5" stroke="#06b6d4" stroke-width="2"/>
                 <text x="480" y="55" text-anchor="middle" font-family="Inter" font-size="12" fill="#94a3b8">Tablet (2 Columns)</text>
                 <rect x="390" y="65" width="85" height="85" fill="#374151" rx="3"/>
                 <rect x="485" y="65" width="85" height="85" fill="#374151" rx="3"/>
 
+                <!-- Mobile View -->
                 <rect x="610" y="40" width="100" height="120" fill="#1f2937" rx="5" stroke="#14b8a6" stroke-width="2"/>
                 <text x="660" y="55" text-anchor="middle" font-family="Inter" font-size="12" fill="#94a3b8">Mobile (Stack)</text>
                 <rect x="620" y="60" width="80" height="25" fill="#374151" rx="3"/>
@@ -609,3 +645,4 @@
     </script>
 </body>
 </html>
+
