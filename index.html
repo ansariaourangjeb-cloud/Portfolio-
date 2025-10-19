@@ -1,185 +1,604 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD TALHA — Creative Freelancer</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWIFTLANCER | Premium Digital Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles for Premium Dark Theme (Deeper Black/Blue) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #060910; /* Very Deep Black-Blue */
+        }
+        /* 3D Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        /* Gradient for main CTA */
+        .cta-gradient {
+             background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%); /* Indigo to Cyan */
+        }
+        .cta-gradient:hover {
+             background: linear-gradient(90deg, #06b6d4 0%, #4f46e5 100%);
+        }
 
-<style>
-:root {
-  --bg1:#071124; --bg2:#071827; --accent:#3b82f6; --accent-2:#2563eb;
-  --text:#E6EEF8; --muted:#92a7c6;
-}
-* { box-sizing:border-box; margin:0; padding:0; }
-body, html { font-family:'Roboto',sans-serif; color:var(--text); height:100%; background:linear-gradient(180deg,var(--bg1),var(--bg2)); overflow-x:hidden; }
-.wrap { max-width:1100px; margin:0 auto; padding:36px 18px; position:relative; z-index:2; }
+        /* Header Scrolled Effect */
+        .header-scrolled {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background-color: rgba(6, 9, 16, 0.95); /* Slightly darker/more opaque when scrolled */
+            backdrop-filter: blur(15px);
+        }
 
-h1,h2,h3 { margin:0; padding:0; }
-a { text-decoration:none; }
+        /* --- STYLISH CARD GLOW AND HOVER EFFECTS --- */
+        .section-card {
+            background-color: rgba(17, 24, 39, 0.7); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 148, 136, 0.3); /* Teal border for glow effect */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7), 0 0 25px rgba(6, 182, 212, 0.2); /* Enhanced shadow with subtle Cyan glow */
+            transition: transform 0.3s, box-shadow 0.4s;
+        }
 
-header.hero { min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; }
-.hero-card { background:rgba(255,255,255,0.02); padding:28px; border-radius:14px; backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.03); box-shadow:0 20px 60px rgba(2,6,23,0.6); }
-h1 { font-size:2.6rem; margin-bottom:6px; }
-.tag { color:var(--muted); margin-bottom:12px; font-size:1.05rem; }
-.desc { color:var(--muted); margin-bottom:18px; line-height:1.6; }
-.cta { display:inline-block; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; padding:12px 20px; border-radius:10px; font-weight:700; transition:transform .22s; box-shadow:0 6px 22px rgba(59,130,246,0.13); }
-.cta:hover { transform:translateY(-4px); }
+        /* Project Card Hover Pulse Animation */
+        @keyframes border-pulse {
+            0% { border-color: rgba(13, 148, 136, 0.3); }
+            50% { border-color: rgba(6, 182, 212, 0.8); }
+            100% { border-color: rgba(13, 148, 136, 0.3); }
+        }
 
-.hero::before {
-  content:""; position:absolute; inset:0; z-index:-2; background:linear-gradient(270deg,#3b82f6,#2563eb,#3b82f6); background-size:600% 600%; animation:bgmove 20s ease infinite;
-}
-@keyframes bgmove {0%{background-position:0 0;}50%{background-position:100% 0;}100%{background-position:0 0;}}
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.9), 0 0 35px rgba(6, 182, 212, 0.4);
+            animation: border-pulse 2s infinite ease-in-out;
+        }
 
-/* Floating icons */
-.floating-icon {
-  position:absolute; font-size:28px; opacity:0.6; animation: floatAnim 6s ease-in-out infinite alternate; pointer-events:none; z-index:1;
-}
-.floating-icon:nth-of-type(2){animation-duration:5s;}
-.floating-icon:nth-of-type(3){animation-duration:7s;}
-@keyframes floatAnim {0%{transform: translateY(0);}50%{transform: translateY(-16px);}100%{transform: translateY(0);}}
+        /* Project Visual Container */
+        .project-visual-container {
+            width: 100%;
+            height: 12rem; /* h-48 */
+            background-color: #0f172a; /* Slate 900 for SVG contrast */
+            padding: 1rem;
+            border-bottom: 2px solid #06b6d4; 
+            overflow: hidden;
+        }
+        
+        /* Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.98);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            max-height: 90vh; 
+            width: 95%;
+            max-width: 900px;
+            padding: 2.5rem;
+            transform: scale(0.95);
+            transition: transform 0.3s ease-out;
+            overflow-y: auto;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
 
-/* Floating shapes background */
-.floating-shape {
-  position:absolute; z-index:0; animation: shapeMove 25s linear infinite alternate;
-}
-.floating-shape:nth-of-type(2) {animation-duration:35s;}
-@keyframes shapeMove {0%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(20px,-20px) rotate(45deg);}100%{transform:translate(0,0) rotate(0deg);}}
-
-/* Sections */
-section { margin-top:28px; position:relative; z-index:2; }
-.hero-card h2 { margin-bottom:12px; font-size:1.4rem; }
-.lead { color:var(--muted); line-height:1.65; }
-
-.skills { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:14px; }
-.skill-item { padding:10px 14px; background:rgba(59,130,246,0.12); border-radius:8px; font-weight:700; transition:transform .3s, box-shadow .3s; }
-.skill-item:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(59,130,246,0.3); }
-
-.portfolio { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; margin-top:14px; }
-.card { width:320px; background:rgba(255,255,255,0.02); padding:14px; border-radius:12px; box-shadow:0 12px 38px rgba(0,0,0,0.6); transition:transform .4s,box-shadow .4s; overflow:hidden; }
-.card:hover { transform:translateY(-6px) scale(1.02); box-shadow:0 28px 70px rgba(0,0,0,0.6); }
-.thumb { height:160px; background:rgba(59,130,246,0.06); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:48px; color:var(--accent); position:relative; overflow:hidden; }
-.preview { position:absolute; inset:0; background:linear-gradient(120deg, rgba(59,130,246,0.12), rgba(96,165,250,0.06)); transform:translateY(100%); transition:transform .45s; display:flex; align-items:center; justify-content:center; font-weight:700; color:white; font-size:0.95rem; letter-spacing:0.6px; }
-.card:hover .preview { transform:translateY(0); }
-
-.contact input, .contact textarea { width:100%; padding:12px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text); margin-bottom:10px; }
-.submit { display:inline-block; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:700; transition:transform .2s; }
-.submit:hover { transform:translateY(-3px); }
-
-footer { margin-top:30px; text-align:center; color:var(--muted); padding-bottom:30px; }
-@media(max-width:900px){ h1{font-size:2rem;} .card{width:100%;} }
-</style>
+        /* Styling for the SVG diagrams inside the modal (more refined) */
+        .svg-container-modal {
+            background-color: #111827; 
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #14b8a6; /* Teal border */
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+        }
+    </style>
 </head>
+<body class="bg-gray-900 text-gray-200 overflow-x-hidden">
 
-<body>
-<div class="wrap">
+    <canvas id="bg-canvas"></canvas>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-card" data-aos="fade-up">
-    <h1>MD TALHA</h1>
-    <div class="tag">Creative Designer | Video Editor | Brand Marketer</div>
-    <div class="desc">Designing brands, social ads & engaging video content that help businesses grow online. Fast learner, ready for freelance projects.</div>
-    <div style="margin-top:16px"><a class="cta" href="#contact">Hire Me — Let's Talk</a></div>
-  </div>
+    <header id="header-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 section-card mx-4 my-4 rounded-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-black tracking-widest text-white uppercase"><span class="text-cyan-400">SWIFT</span>LANCER</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-gray-300 hover:bg-cyan-500/20 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="text-gray-300 hover:bg-cyan-500/20 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">Expertise</a>
+                        <a href="#projects" class="text-gray-300 hover:bg-cyan-500/20 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">Projects</a>
+                        <a href="#contact" class="text-white bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-lg">Get in Touch</a>
+                    </div>
+                </div>
+                 <div class="md:hidden">
+                    </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- Floating subtle icons -->
-  <div class="floating-icon" style="top:20%; left:10%;">🎨</div>
-  <div class="floating-icon" style="top:50%; left:80%;">🎬</div>
-  <div class="floating-icon" style="top:70%; left:40%;">💻</div>
+    <main>
+        <section id="home" class="h-screen flex items-center justify-center text-center relative">
+            <div class="absolute inset-0 bg-gray-900/40"></div>
+            <div class="z-10 px-4 pt-20">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-tight">
+                    <span class="block text-gray-300 font-extrabold">Digital Brand Strategy</span>
+                    <span class="cta-gradient bg-clip-text text-transparent drop-shadow-2xl">Creation & Optimization</span>
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-400 font-light">
+                    I deliver high-conversion video ads, memorable design assets, and end-to-end marketing strategy to accelerate your business growth.
+                </p>
+                <div class="mt-10 flex justify-center gap-6">
+                    <a href="#projects" class="cta-gradient text-white font-bold py-4 px-10 rounded-xl shadow-2xl shadow-cyan-500/50 transition-all duration-300 hover:shadow-cyan-400/70 text-lg">View High-Impact Projects</a>
+                </div>
+            </div>
+        </section>
 
-  <!-- Floating shapes -->
-  <div class="floating-shape" style="top:5%; left:5%; width:60px; height:60px; border-radius:50%; background:rgba(59,130,246,0.15);"></div>
-  <div class="floating-shape" style="bottom:10%; right:10%; width:80px; height:80px; border-radius:12px; background:rgba(37,99,235,0.15);"></div>
-</header>
+        <section id="about" class="py-24 sm:py-40">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="section-card rounded-3xl p-8 md:p-14 lg:p-20">
+                    <div class="max-w-4xl mx-auto text-center">
+                         <h2 class="text-sm font-semibold leading-7 text-teal-400 uppercase tracking-widest">About SWIFTLANCER</h2>
+                        <p class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Where Strategy Meets Stunning Visuals</p>
+                        <p class="mt-8 text-xl leading-9 text-gray-300">
+                            I am a dedicated **Digital Creator & Marketing Specialist** committed to precision and performance. My work bridges the gap between creative vision and strategic execution. With robust expertise in **brand marketing**, **professional video production**, and **responsive web design**, I ensure every asset produced is not just visually appealing, but systematically optimized for maximum client return on investment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ABOUT -->
-<section id="about" data-aos="fade-up">
-  <div class="hero-card">
-    <h2>About Me</h2>
-    <p class="lead">I’m MD TALHA — a versatile digital creator focused on banner & logo design, content strategy, video ads, and web design. I combine creativity with practical marketing to deliver results. New to freelancing but ready to deliver high quality work.</p>
-  </div>
-</section>
+        <section id="skills" class="py-24 sm:py-40">
+             <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="max-w-2xl mx-auto lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-teal-400 uppercase tracking-widest">Core Capabilities</h2>
+                    <p class="mt-2 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">The Technologies and Disciplines</p>
+                    <p class="mt-6 text-xl leading-8 text-gray-400">
+                        My skill set is tailored to deliver modern, end-to-end digital success.
+                    </p>
+                </div>
+                <div class="mt-16 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">Brand Strategy</p>
+                    </div>
+                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">Conversion Copywriting</p>
+                    </div>
+                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">High-Impact Video Ads</p>
+                    </div>
+                     <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">Logo/Identity Design</p>
+                    </div>
+                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">Canva & Adobe Suite</p>
+                    </div>
+                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">Videography/Editing</p>
+                    </div>
+                    <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">Responsive Web Design</p>
+                    </div>
+                     <div class="section-card p-6 rounded-xl transition-all duration-300 hover:bg-gray-700/50 border-teal-400/30 hover:shadow-teal-400/50 hover:scale-[1.05]">
+                        <p class="font-extrabold text-white">JavaScript (Conceptual)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- SKILLS -->
-<section id="skills" data-aos="fade-up">
-  <div class="hero-card">
-    <h2>My Skills</h2>
-    <div class="skills">
-      <div class="skill-item">Banner Design</div>
-      <div class="skill-item">Logo Design</div>
-      <div class="skill-item">Video Editing</div>
-      <div class="skill-item">Canva</div>
-      <div class="skill-item">Content Strategy</div>
-      <div class="skill-item">Copywriting</div>
-      <div class="skill-item">Web Design</div>
-      <div class="skill-item">JavaScript</div>
-      <div class="skill-item">YouTube Ads</div>
-      <div class="skill-item">Photo Editing</div>
+        <section id="projects" class="py-24 sm:py-40">
+             <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                 <div class="max-w-2xl mx-auto lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-teal-400 uppercase tracking-widest">Portfolio of Excellence</h2>
+                    <p class="mt-2 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Strategic Case Studies</p>
+                    <p class="mt-6 text-xl leading-8 text-gray-400">
+                        These projects demonstrate end-to-end strategic thinking, creative execution, and technical proficiency in digital content creation.
+                    </p>
+                </div>
+
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                        <div id="visual-zenith" class="project-visual-container flex items-center justify-center"></div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white">Zenith AI Launch Strategy</h3>
+                            <p class="mt-3 text-gray-400">Developed a strategic content funnel and produced a **high-conversion video ad script** to maximize subscription sign-ups.</p>
+                            <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Video Ads, Content Strategy, Copywriting, A/B Testing</p>
+                            <a href="javascript:void(0)" data-project-id="zenith" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">Analyze Case Study &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                        <div id="visual-greenfork" class="project-visual-container flex items-center justify-center"></div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white">The Green Fork Rebranding</h3>
+                            <p class="mt-3 text-gray-400">Designed a complete visual identity, including a modern **logo**, color system, and UI standards for a premium organic eatery.</p>
+                            <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Logo Design, Brand Identity, Canva, Typography Pairing, UI/UX</p>
+                            <a href="javascript:void(0)" data-project-id="greenfork" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">View Design Strategy &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="section-card rounded-2xl overflow-hidden group transition-shadow duration-300 project-card">
+                        <div id="visual-toolkit" class="project-visual-container flex items-center justify-center"></div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white">Freelancer Toolkit Page</h3>
+                            <p class="mt-3 text-gray-400">Conceptualized and wrote the high-conversion copy and created the design blueprint for a **responsive lead generation landing page**.</p>
+                            <p class="mt-4 text-sm text-teal-400 font-medium tracking-wider">Skills: Responsive Web Design, Lead Generation, Copywriting, UX Flow</p>
+                            <a href="javascript:void(0)" data-project-id="toolkit" class="project-link inline-block mt-6 text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">Explore Blueprint &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="contact" class="py-24 sm:py-40">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                 <div class="section-card rounded-3xl p-8 md:p-14 lg:p-20 text-center">
+                    <h2 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Ready to Define Your Digital Edge?</h2>
+                    <p class="mt-6 text-xl leading-9 text-gray-400">
+                       Don't just launch—**dominate**. Send me a message, and let's craft a bespoke strategy to hit your key performance indicators.
+                    </p>
+                    <div class="mt-12">
+                        <a href="mailto:Ansariaourangjeb@gmail.com" class="cta-gradient text-white font-bold py-4 px-12 rounded-xl shadow-2xl shadow-cyan-500/50 transition-all duration-300 hover:shadow-cyan-400/70 text-xl">
+                            Ansariaourangjeb@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <button id="scrollTopButton" aria-label="Scroll to top" class="fixed bottom-8 right-8 p-4 bg-cyan-600 text-white rounded-full shadow-xl opacity-0 pointer-events-none hover:bg-cyan-500 transition-all duration-300 transform hover:scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+    
+    <footer class="py-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2024 SWIFTLANCER | Digital Creative Strategy. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <div id="caseStudyModal" class="modal-overlay">
+        <div class="modal-content section-card rounded-3xl relative">
+            <button id="closeModal" aria-label="Close" class="absolute top-6 right-6 p-2 text-white bg-gray-800/80 rounded-full hover:bg-gray-700/80 transition-colors shadow-lg">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 id="modalTitle" class="text-5xl font-black text-white mb-8 border-b border-teal-400/50 pb-3"></h2>
+            <div id="modalContent" class="text-lg text-gray-300 space-y-6 leading-relaxed">
+                </div>
+        </div>
     </div>
-  </div>
-</section>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+            }
+        }
+    </script>
 
-<!-- PORTFOLIO -->
-<section id="portfolio" data-aos="fade-up">
-  <div class="hero-card">
-    <h2>Portfolio</h2>
-    <div class="portfolio">
-      <article class="card" data-aos="flip-left">
-        <div class="thumb">🖼️<div class="preview">Preview — Banner</div></div>
-        <h3>Banner Design — Social Campaign</h3>
-        <p>Sample banner mockup for product launch — optimized for social feed and conversions.</p>
-      </article>
-      <article class="card" data-aos="flip-left" data-aos-delay="100">
-        <div class="thumb">🖼️<div class="preview">Preview — Logo</div></div>
-        <h3>Logo & Brand Identity</h3>
-        <p>Concept logo for a fictional brand — modern, scalable and brand-ready.</p>
-      </article>
-      <article class="card" data-aos="flip-left" data-aos-delay="200">
-        <div class="thumb">🎬<div class="preview">Preview — Video</div></div>
-        <h3>Video Ad — Promo 30s</h3>
-        <p>Short promotional ad edited for YouTube/Instagram with a strong hook & CTA.</p>
-      </article>
-    </div>
-  </div>
-</section>
+    <script type="module">
+        import * as THREE from 'three';
 
-<!-- CONTACT -->
-<section id="contact" data-aos="fade-up">
-  <div class="hero-card contact">
-    <h2>Contact Me</h2>
-    <p class="lead" style="text-align:center">Email me directly — <strong>ansariaourangjeb@gmail.com</strong></p>
-    <form id="contactForm">
-      <input id="name" type="text" placeholder="Your name" required>
-      <input id="email" type="email" placeholder="Your email" required>
-      <textarea id="message" placeholder="Your message" rows="5" required></textarea>
-      <div style="text-align:center;margin-top:10px">
-        <button class="submit" type="submit">Send Message</button>
-      </div>
-    </form>
-  </div>
-</section>
+        // --- CORE THREE.JS SETUP ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('#bg-canvas'),
+            alpha: true, 
+            antialias: true,
+        });
 
-<footer>
-  © 2025 MD TALHA • ansariaourangjeb@gmail.com
-</footer>
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.setZ(5);
+        
+        // --- PARTICLE FIELD GRAPHIC ---
+        const particleCount = 3000; // Increased particle count
+        const particlesGeometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const velocities = new Float32Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 3 + 0] = (Math.random() - 0.5) * 12; // Larger spread
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
+            velocities[i * 3 + 0] = (Math.random() - 0.5) * 0.0001;
+            velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.0001;
+            velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.0001;
+        }
 
-</div>
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        const particlesMaterial = new THREE.PointsMaterial({
+            color: 0x14b8a6, // Teal/Cyan color for glow
+            size: 0.015,
+            sizeAttenuation: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.8
+        });
 
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-AOS.init({ duration:800, once:true });
+        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particles);
 
-document.getElementById('contactForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const name = encodeURIComponent(document.getElementById('name').value || '');
-  const from = encodeURIComponent(document.getElementById('email').value || '');
-  const body = encodeURIComponent(document.getElementById('message').value || '') + '%0A%0A' + 'From: ' + name + ' (' + from + ')';
-  const subject = encodeURIComponent('Website message from ' + (name || 'visitor'));
-  window.location.href = 'mailto:ansariaourangjeb@gmail.com?subject=' + subject + '&body=' + body;
-});
-</script>
+        // --- INTERACTIVITY ---
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        const updateMousePosition = (clientX, clientY) => {
+            mouseX = (clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(clientY / window.innerHeight) * 2 + 1;
+        };
 
+        document.addEventListener('mousemove', (event) => updateMousePosition(event.clientX, event.clientY));
+        document.addEventListener('touchmove', (event) => {
+            if (event.touches.length > 0) {
+                updateMousePosition(event.touches[0].clientX, event.touches[0].clientY);
+            }
+        });
+
+        // --- ANIMATION LOOP ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Subtle self-rotation
+            particles.rotation.y += 0.0003;
+            particles.rotation.x += 0.00015;
+
+            // Mouse-driven rotation (more subtle)
+            particles.rotation.y += mouseX * 0.00005;
+            particles.rotation.x += mouseY * 0.00005;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // --- RESPONSIVENESS AND UI SCRIPTS ---
+
+        // 1. Handle Window Resizing
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        // 2. Scroll-Based Header and Scroll-to-Top Button Visibility
+        const header = document.getElementById('header-nav');
+        const scrollTopButton = document.getElementById('scrollTopButton');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            
+            if (scrollY > 600) {
+                scrollTopButton.classList.remove('opacity-0', 'pointer-events-none');
+                scrollTopButton.classList.add('opacity-100');
+            } else {
+                scrollTopButton.classList.add('opacity-0', 'pointer-events-none');
+                scrollTopButton.classList.remove('opacity-100');
+            }
+        });
+
+        // 3. Scroll to Top Functionality
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- VISUAL & MODAL CONTENT DEFINITIONS (PROFESSIONAL SVGs) ---
+
+        // NEW 1: Zenith AI (Data/Conversion) - 3D Holographic Data Pipeline
+        const zenithSVGVisual = `
+            <svg viewBox="0 0 800 190" class="w-full h-full p-4" preserveAspectRatio="xMidYMid meet">
+                <rect x="0" y="0" width="800" height="190" fill="#0f172a" rx="10"/>
+                <defs>
+                    <linearGradient id="zenithGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <path d="M 50 170 L 750 170 L 700 30 L 0 30 Z" fill="rgba(30, 41, 59, 0.4)" stroke="#334155" stroke-width="1"/>
+                
+                <path 
+                    d="M 100 150 C 250 80, 350 120, 450 100" 
+                    fill="none" 
+                    stroke="rgba(255, 255, 255, 0.4)" 
+                    stroke-width="3" 
+                    stroke-dasharray="10 5"
+                    filter="url(#glow)"
+                />
+                
+                <rect x="420" y="70" width="60" height="60" fill="url(#zenithGrad)" opacity="0.4" rx="5" filter="url(#glow)"/>
+                <text x="450" y="105" text-anchor="middle" font-family="Inter" font-size="20" fill="#fff" font-weight="900">AI</text>
+                
+                <path 
+                    d="M 480 100 C 580 80, 680 60, 750 60" 
+                    fill="none" 
+                    stroke="#06b6d4" 
+                    stroke-width="5" 
+                    stroke-linecap="round"
+                    filter="url(#glow)"
+                />
+                
+                <circle cx="750" cy="60" r="10" fill="#06b6d4" filter="url(#glow)"/>
+                <text x="750" y="40" text-anchor="middle" font-family="Inter" font-size="20" fill="#06b6d4" font-weight="bold">RESULT</text>
+            </svg>
+        `;
+        
+        // NEW 2: The Green Fork (Branding/Logo) - Dark Mode UI Showcase
+        const greenForkSVGVisual = `
+            <svg viewBox="0 0 800 190" class="w-full h-full p-4" preserveAspectRatio="xMidYMid meet">
+                <rect x="0" y="0" width="800" height="190" fill="#0f172a" rx="10"/>
+
+                <rect x="50" y="30" width="700" height="130" fill="#1f2937" rx="10" stroke="#374151" stroke-width="2"/>
+                <circle cx="65" cy="45" r="5" fill="#f87171"/>
+                <circle cx="80" cy="45" r="5" fill="#facc15"/>
+                <circle cx="95" cy="45" r="5" fill="#4ade80"/>
+
+                <rect x="80" y="60" width="120" height="80" fill="#0f172a" rx="5"/>
+                <text x="140" y="105" text-anchor="middle" font-family="Inter" font-size="50" fill="#10b981" font-weight="900">G</text>
+                <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="14" fill="#6ee7b7">Logo Mockup</text>
+
+                <text x="300" y="80" font-family="Inter" font-size="30" fill="#10b981" font-weight="900">Brand Headline</text>
+                <text x="300" y="115" font-family="Inter" font-size="18" fill="#e2e8f0" font-weight="500">The Green Fork Eatery</text>
+                <text x="300" y="135" font-family="Inter" font-size="14" fill="#94a3b8" font-weight="300">Modern, Sustainable, Organic.</text>
+
+                <rect x="600" y="70" width="30" height="60" fill="#10b981" rx="4"/>
+                <rect x="640" y="70" width="30" height="60" fill="#facc15" rx="4"/>
+                <rect x="680" y="70" width="30" height="60" fill="#4ade80" rx="4"/>
+                <text x="655" y="155" text-anchor="middle" font-family="Inter" font-size="14" fill="#94a3b8">Palette</text>
+            </svg>
+        `;
+
+        // NEW 3: Freelancer Toolkit (Web Design/UX) - Responsive Blueprint
+        const toolkitSVGVisual = `
+            <svg viewBox="0 0 800 190" class="w-full h-full p-4" preserveAspectRatio="xMidYMid meet">
+                <rect x="0" y="0" width="800" height="190" fill="#0f172a" rx="10"/>
+
+                <text x="50" y="25" font-family="Inter" font-size="16" fill="#06b6d4" font-weight="500">Responsive Blueprint</text>
+                
+                <rect x="50" y="40" width="300" height="120" fill="#1f2937" rx="5" stroke="#4f46e5" stroke-width="2"/>
+                <text x="200" y="55" text-anchor="middle" font-family="Inter" font-size="12" fill="#94a3b8">Desktop (3 Columns)</text>
+                <rect x="60" y="65" width="80" height="85" fill="#374151" rx="3"/>
+                <rect x="145" y="65" width="80" height="85" fill="#374151" rx="3"/>
+                <rect x="230" y="65" width="80" height="85" fill="#374151" rx="3"/>
+                
+                <rect x="380" y="40" width="200" height="120" fill="#1f2937" rx="5" stroke="#06b6d4" stroke-width="2"/>
+                <text x="480" y="55" text-anchor="middle" font-family="Inter" font-size="12" fill="#94a3b8">Tablet (2 Columns)</text>
+                <rect x="390" y="65" width="85" height="85" fill="#374151" rx="3"/>
+                <rect x="485" y="65" width="85" height="85" fill="#374151" rx="3"/>
+
+                <rect x="610" y="40" width="100" height="120" fill="#1f2937" rx="5" stroke="#14b8a6" stroke-width="2"/>
+                <text x="660" y="55" text-anchor="middle" font-family="Inter" font-size="12" fill="#94a3b8">Mobile (Stack)</text>
+                <rect x="620" y="60" width="80" height="25" fill="#374151" rx="3"/>
+                <rect x="620" y="90" width="80" height="25" fill="#374151" rx="3"/>
+                <rect x="620" y="120" width="80" height="25" fill="#374151" rx="3"/>
+            </svg>
+        `;
+
+        // Map the visuals to their container IDs
+        document.getElementById('visual-zenith').innerHTML = zenithSVGVisual;
+        document.getElementById('visual-greenfork').innerHTML = greenForkSVGVisual;
+        document.getElementById('visual-toolkit').innerHTML = toolkitSVGVisual;
+
+        // --- MODAL FUNCTIONALITY ---
+        const modal = document.getElementById('caseStudyModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalButton = document.getElementById('closeModal');
+        const projectLinks = document.querySelectorAll('.project-link');
+
+        const projectContent = {
+            zenith: {
+                title: "Zenith AI Launch Strategy: Maximizing Conversions",
+                content: `
+                    <p><strong>The Challenge:</strong> Launch a new, high-ticket AI subscription service into a crowded market. The primary goal was to achieve a minimum 3.5% CVR (Conversion Rate) on paid social media traffic and establish a clear value proposition.</p>
+                    <p><strong>The Strategy:</strong> We implemented a dual-path funnel. Path A utilized a high-impact, 15-second **video ad** focused purely on the *pain point* and the *immediate result* (e.g., "Stop Wasting Time on X. Start Profiting Now."). Path B used a longer-form video (60s) for cold audiences, focusing on the **product mechanics** and demonstrating the **AI Pipeline** (visualized below).</p>
+                    <div class="svg-container-modal">${zenithSVGVisual}</div>
+                    <h3 class="text-3xl font-bold text-teal-400 mt-8 mb-4">Results & Impact:</h3>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>**Achieved 4.1% CVR** on Path A (Short Video) in the first 30 days, exceeding the target by 0.6%.</li>
+                        <li>The longer-form video (Path B) secured a **30% lower CPA** (Cost Per Acquisition) for warm audiences, indicating strong educational value.</li>
+                        <li>**Key Takeaway:** Strategic video length and targeting were crucial: short, punchy videos for initial conversion; detailed content for later-stage trust-building.</li>
+                    </ul>
+                `
+            },
+            greenfork: {
+                title: "The Green Fork Rebranding: Identity & UI Standards",
+                content: `
+                    <p><strong>The Challenge:</strong> The Green Fork needed to evolve its visual identity from a rustic, farm-stand look to a premium, modern, and sustainable eatery brand, ready for a multi-location expansion and online ordering platform.</p>
+                    <p><strong>The Strategy:</strong> We developed a brand style that focused on clean lines, a sophisticated color palette (using deep greens, slate grays, and subtle gold accents), and a timeless, geometric logo (The "G" and Fork concept). The brand standards were delivered with a focus on UI/UX application.</p>
+                    <div class="svg-container-modal">${greenForkSVGVisual}</div>
+                    <h3 class="text-3xl font-bold text-teal-400 mt-8 mb-4">Core Deliverables:</h3>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>**Primary Logo & Secondary Marks:** Created a scalable logo system that works across menus, apps, and exterior signage.</li>
+                        <li>**Typography Stack:** Defined a premium, modern font pairing that ensures readability on all digital and print mediums.</li>
+                        <li>**UI/UX Blueprint:** Designed the core components (buttons, navigation, card layouts) for their upcoming delivery app, ensuring visual consistency with the new identity.</li>
+                    </ul>
+                `
+            },
+            toolkit: {
+                title: "Freelancer Toolkit Page: Lead Generation Blueprint",
+                content: `
+                    <p><strong>The Challenge:</strong> Design and write a high-performance landing page to capture emails by offering a "Freelancer Success Toolkit" magnet. The page had to be extremely fast and perfectly responsive to maximize mobile conversions.</p>
+                    <p><strong>The Strategy:</strong> The blueprint followed a classic AIDA (Attention, Interest, Desire, Action) structure, featuring a clear, benefit-driven headline, social proof (placeholder testimonials), and a single, unmissable CTA above the fold. The structural design prioritized a **mobile-first stacking order** to minimize scroll depth on smaller screens.</p>
+                    <div class="svg-container-modal">${toolkitSVGVisual}</div>
+                    <h3 class="text-3xl font-bold text-teal-400 mt-8 mb-4">Blueprint & Technical Focus:</h3>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>**Headline/Copy:** Utilized **UVP (Unique Value Proposition)** copywriting, focusing on specific, quantified benefits (e.g., "Save 10 hours a week").</li>
+                        <li>**A/B Test Ready:** The design uses modular sections to facilitate easy A/B testing of the main visual and CTA copy.</li>
+                        <li>**Responsive Design Logic:** The desktop's three-column content section collapses perfectly into a stacked, single-column layout on mobile, ensuring a seamless user experience (see diagram above).</li>
+                    </ul>
+                `
+            }
+        };
+
+        // Event listener to open the modal
+        projectLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = link.getAttribute('data-project-id');
+                const content = projectContent[projectId];
+
+                if (content) {
+                    modalTitle.textContent = content.title;
+                    modalContent.innerHTML = content.content;
+                    modal.classList.add('open');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling body when modal is open
+                }
+            });
+        });
+
+        // Event listener to close the modal
+        closeModalButton.addEventListener('click', () => {
+            modal.classList.remove('open');
+            document.body.style.overflow = ''; // Restore body scrolling
+        });
+
+        // Close modal when clicking outside the content area
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === 'caseStudyModal') {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+        
+    </script>
 </body>
 </html>
